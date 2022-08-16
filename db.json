@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "email": "koval@gmail.com",
+      "password": "$2a$10$wHQ6/qcZ/zpsUiOy9Zmd.exYAaNPCWNadA5Hso0thSrU2tF8MfUOm",
+      "name": "Famous",
+      "notesList": [
+        {
+          "id": 1,
+          "text": "Aloha123"
+        },
+        {
+          "id": 2,
+          "text": "Aloha111123"
+        },
+        {
+          "id": 3,
+          "text": "Aloha112323"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "email": "fms@gmail.com",
+      "password": "$2a$10$FOsg9yNsyiz3Dhisx1FlBOJfnjgjvRukjH9d8NnPy18FQq7eHH/bS",
+      "name": "Kostya",
+      "notesList": [
+        {
+          "id": 1,
+          "text": "Aloha123"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "email": "fms2@gmail.com",
+      "password": "$2a$10$kJAzpYV5qDYwjhHKw7jJoufC9iyp8hYzl6iF.IIImXqKShK4SjBIu",
+      "name": "Kostya",
+      "notesList": [],
+      "id": 3
+    }
+  ]
+}
