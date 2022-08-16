@@ -1,5 +1,5 @@
-import {useContext, useState} from "react";
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader} from "@mui/material";
+import {useContext, useEffect, useState} from "react";
+import {List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader} from "@mui/material";
 import {ArrowDownward, ArrowUpward, Delete, NoteAdd} from "@mui/icons-material";
 import {v4 as uniqId} from "uuid";
 import {CustomContext} from "../Context";
@@ -8,17 +8,44 @@ import axios from "axios";
 
 const NotesList = () => {
     const {auth, setAuth} = useContext(CustomContext)
-    const [notes, setNotes] = useState(auth.notesList)
-    console.log(notes)
+    const [notes, setNotes] = useState([])
 
-    const addNewItem =  (text) => {
+    useEffect(() => {
+        const fetchNotes = async () => {
+            try {
+                const {data} = await axios.get(`http://localhost:4000/users/${auth.user?.id}/posts`)
+                setNotes(data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchNotes()
+    }, [auth])
+
+    const config = {
+        headers: {Authorization: `Bearer ${auth.accessToken}`}
+    };
+
+    // const fetchNotes = async () => {
+    //     try {
+    //         await axios.get(`http://localhost:4000/users/${auth.user.id}/posts`)
+    //             .then(res => setNotes(res.data))
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+
+    // fetchNotes();
+
+    const addNewItem = async (text) => {
         const newItem = {
+            userId: auth.user.id,
             id: uniqId(),
             text,
         }
         try {
-            // await axios.post(`http://localhost:4000/users/${auth.id}`, newItem)
-            setNotes(prevState => [...prevState, newItem])
+            await axios.post(`http://localhost:4000/600/users/${auth.user.id}/posts`, newItem, config)
+                .then(res => setNotes(prevState => [...prevState, newItem]))
         } catch (e) {
             console.log(e)
         }
@@ -27,7 +54,7 @@ const NotesList = () => {
 
     return (
         <List
-            sx={{width: '100%', maxWidth: 800, bgcolor: 'yellow'}}
+            sx={{width: '100%', maxWidth: 800}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
@@ -36,7 +63,7 @@ const NotesList = () => {
                 </ListSubheader>
             }
         >
-            {notes.map((item) => (
+            {notes?.map((item) => (
                 <ListItem key={item.id} sx={{display: "flex", justifyContent: "space-between"}}>
                     <ListItemText primary={item.text}/>
                     <ListItemButton sx={{width: "50px"}}>

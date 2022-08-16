@@ -8,7 +8,7 @@ const Dashboard = () => {
     return (
         <Box>
             <Typography component="h1" variant="h3">
-                    Hello {auth?.name}
+                    Hello {auth.user?.name}
                 </Typography>
             <Typography component="h2" variant="h5">
                 <NotesList/>

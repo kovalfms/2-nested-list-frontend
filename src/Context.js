@@ -8,25 +8,14 @@ export const CustomContext = createContext()
 export const Context = ({children}) => {
     const [auth, setAuth] = useState('')
     console.log(auth)
-    // const [user, setUser] = useState('')
     const navigate = useNavigate()
+
     useEffect(() => {
         setAuth(JSON.parse(localStorage.getItem('user_login')))
     }, [])
 
     //
-    // const fetchUser = async () => {
-    //     try {
-    //         await axios.get('http://localhost:4000/users')
-    //             .then((res) => {
-    //                 res.data.filter(item => item.email === auth.user.email)
-    //                 // return  console.log(data)
-    //             })
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-    // console.log(fetchUser())
+
 
     const registerUser = async (data) => {
         try {
@@ -43,8 +32,8 @@ export const Context = ({children}) => {
         try {
             await axios.post(' http://localhost:4000/login', data)
                 .then(res => {
-                        setAuth(res.data.user)
-                        localStorage.setItem('user_login', JSON.stringify(res.data.user))
+                        setAuth(res.data)
+                        localStorage.setItem('user_login', JSON.stringify(res.data))
                     }
                 )
 
