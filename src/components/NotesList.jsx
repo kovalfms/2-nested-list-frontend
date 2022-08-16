@@ -7,7 +7,7 @@ import Form from "./Form";
 import axios from "axios";
 
 const NotesList = () => {
-    const {auth, setAuth} = useContext(CustomContext)
+    const {auth} = useContext(CustomContext)
     const [notes, setNotes] = useState(auth.notesList)
     console.log(notes)
 
