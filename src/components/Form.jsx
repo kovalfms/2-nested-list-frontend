@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Input, ListItem} from "@mui/material";
+import {Button, Grid, Paper, TextField} from "@mui/material";
 
 const Form = ({addNewItem}) => {
 
@@ -14,21 +14,32 @@ const Form = ({addNewItem}) => {
     };
 
     return (
-        <ListItem sx={{display: "flex"}}>
-                <Input
-                    fullWidth
-                    placeholder="add notes"
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                />
-                <Button
-                    sx={{marginLeft: 20}}
-                    variant="outlined"
-                    onClick={checkInput}
-                >
-                    Add
-                </Button>
-        </ListItem>
+        <Paper elevation={2} sx={{ margin: "16px", padding: "16px", width: "800px" }}>
+            <Grid container
+                  flex
+                  justifyContent="space-between"
+                  alignItems="center"
+            >
+                <Grid xs={12} md={10} item sx={{ paddingRight: "16px"}}>
+                    <TextField
+                        placeholder="Add Todo here"
+                        value={inputText}
+                        fullWidth
+                        onChange={(e) => setInputText(e.target.value)}
+                    />
+                </Grid>
+                <Grid xs={2} md={2} item>
+                    <Button
+                        fullWidth
+                        color="secondary"
+                        variant="outlined"
+                        onClick={checkInput}
+                    >
+                        Add
+                    </Button>
+                </Grid>
+            </Grid>
+        </Paper>
     );
 };
 

@@ -1,9 +1,10 @@
 import {createContext, useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {v4 as uniqId} from "uuid";
+import api from "./server/api";
 
 export const CustomContext = createContext()
-
 
 export const Context = ({children}) => {
     const [auth, setAuth] = useState('')
@@ -14,12 +15,9 @@ export const Context = ({children}) => {
         setAuth(JSON.parse(localStorage.getItem('user_login')))
     }, [])
 
-    //
-
-
     const registerUser = async (data) => {
         try {
-            await axios.post(' http://localhost:4000/register', {...data, notesList: []})
+            await api.post('/register', data)
                 .then(res => res.data)
             navigate('/login')
 
@@ -30,7 +28,7 @@ export const Context = ({children}) => {
 
     const loginUser = async (data) => {
         try {
-            await axios.post(' http://localhost:4000/login', data)
+            await api.post('/login', data)
                 .then(res => {
                         setAuth(res.data)
                         localStorage.setItem('user_login', JSON.stringify(res.data))
@@ -61,3 +59,7 @@ export const Context = ({children}) => {
         {children}
     </CustomContext.Provider>
 }
+
+
+
+

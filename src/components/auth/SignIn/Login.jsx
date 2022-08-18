@@ -125,11 +125,11 @@ const Login = () => {
                                 Sign In
                             </Button>
                         </form>
-                        <Box display="flex">
+                        <Box display="flex" marginTop="10px">
                             <Typography component="p" variant="p">
                                 You are not registered yet?
                             </Typography>
-                            <Typography component="p" variant="p">
+                            <Typography component="p" variant="p" marginLeft="10px">
                                 <Link to="/register">
                                     Register
                                 </Link>

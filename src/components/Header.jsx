@@ -32,13 +32,13 @@ const Header = () => {
                             <Button
                                 onClick={logOutUser}
                                 color="inherit">
-                                <Link to="/login" style={{textDecoration: "none"}}>
+                                <Link to="/login" style={{textDecoration: "none", color: "white"}}>
                                     Logout
                                 </Link>
                             </Button>
                         </>
                         : <Button color="inherit">
-                            <Link to="/login" style={{textDecoration: "none"}}>
+                            <Link to="/login" style={{textDecoration: "none", color: "white"}}>
                                 Login
                             </Link>
                         </Button>

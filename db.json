@@ -1,63 +1,23 @@
 {
   "users": [
     {
-      "email": "fms@gmail.com",
-      "password": "$2a$10$VfhpyTqTwmFb09Uj1g4XOeKeDXq3JPIxAj0d1fldFH00hzCFpYk0e",
-      "name": "Famous",
-      "notesList": [],
+      "email": "kostya@gmail.com",
+      "password": "$2a$10$fJzctcgRyAPwq4pGkYfHa...UdV6PqK1mKGYIpahxTb6d0tqf4fSe",
+      "name": "Kostya",
       "id": 1
+    },
+    {
+      "email": "fms@gmail.com",
+      "password": "$2a$10$RQjyw6dVftgraXVDrXo6m.u28otHRCyXlvwppROyAIZeE1en.8ZMu",
+      "name": "famous",
+      "id": 2
     }
   ],
   "posts": [
     {
-      "userId": "1",
-      "id": 2,
-      "text": "rabotai tvar`"
-    },
-    {
-      "text": "123124",
-      "id": 3,
-      "userId": "1"
-    },
-    {
-      "userId": "1",
-      "id": "c8d53991-01c1-46ec-8180-3e5d99fcf385",
-      "text": "1"
-    },
-    {
-      "userId": "1",
-      "id": "d0aba6ad-36fc-4744-8bab-61e7679604fd",
-      "text": "2"
-    },
-    {
-      "userId": "1",
-      "id": "bccf2d36-69d9-494b-a387-047bcdd000c8",
-      "text": "12345"
-    },
-    {
-      "userId": "1",
-      "id": "20b915d1-5b29-4839-9f5c-81c4cc6f9518",
-      "text": "123123"
-    },
-    {
-      "userId": "1",
-      "id": "e2051372-9450-4a81-ad6a-beecba2de949",
-      "text": "2"
-    },
-    {
-      "userId": "1",
-      "id": "f654c4e9-f73a-4fe4-ae0c-212d89ce4a38",
-      "text": "3"
-    },
-    {
-      "userId": "1",
-      "id": "ef0118f8-e634-4965-ab26-2b5f631042d1",
-      "text": "2"
-    },
-    {
-      "userId": "1",
-      "id": "266194a8-3b36-4a69-80e1-f41f2fcf5b40",
-      "text": "2"
+      "id": "533a9176-6772-4817-b019-ca495354eadb",
+      "text": "1",
+      "userId": "2"
     }
   ]
 }

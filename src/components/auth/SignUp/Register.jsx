@@ -123,11 +123,11 @@ const Register = () => {
                                 Sign Up
                             </Button>
                         </form>
-                        <Box display="flex">
+                        <Box display="flex" marginTop="10px">
                             <Typography component="p" variant="p">
                                 Do you already have an account?
                             </Typography>
-                            <Typography component="p" variant="p">
+                            <Typography component="p" variant="p" marginLeft="10px">
                                 <Link to="/login"> Login</Link>
                             </Typography>
                         </Box>
