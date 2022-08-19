@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {AppBar, Avatar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
 import {SpeakerNotes} from "@mui/icons-material"
 import {Link} from "react-router-dom";
-import {CustomContext} from "../Context";
+import {CustomContext} from "../../Context";
 
 const Header = () => {
     const {auth, logOutUser} = useContext(CustomContext)

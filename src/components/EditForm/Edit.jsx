@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Button, Grid, TextField} from "@mui/material";
+import {CustomContext} from "../../Context";
 
-const Edit = ({item, editItem, open, setOpen}) => {
+const Edit = ({item, openEdit, setOpenEdit}) => {
     const [inputText, setInputText] = useState(item.text)
+
+    const {editItem} = useContext(CustomContext)
+
     const checkInput = () => {
         if (inputText === '') {
             return
         }
         editItem(inputText, item.id)
         setInputText("");
-        setOpen(() => !open)
+        setOpenEdit(() => !openEdit)
     };
     return (
         <Grid container
@@ -30,7 +34,7 @@ const Edit = ({item, editItem, open, setOpen}) => {
                     fullWidth
                     color="secondary"
                     variant="outlined"
-                    onClick={()=> checkInput()}
+                    onClick={() => checkInput()}
                 >
                     Edit
                 </Button>

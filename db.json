@@ -10,14 +10,46 @@
       "email": "fms@gmail.com",
       "password": "$2a$10$RQjyw6dVftgraXVDrXo6m.u28otHRCyXlvwppROyAIZeE1en.8ZMu",
       "name": "famous",
-      "id": 2
+      "id": 2,
+      "notes": [
+        {
+          "id": "1a4f1aab-ab27-4ac9-afb9-9271e9032953",
+          "text": "2"
+        }
+      ]
+    },
+    {
+      "email": "koval@gmail.com",
+      "password": "$2a$10$UxQNd5Q.Upb87MwaiHxjUuosFRdVmMMHYracCQYGYBtfros5qhSiS",
+      "name": "Famous",
+      "id": 3
     }
   ],
   "posts": [
     {
-      "id": "533a9176-6772-4817-b019-ca495354eadb",
-      "text": "1",
-      "userId": "2"
+      "id": "0b356d7a-d9f7-4bf0-80ac-9e73daf11eea",
+      "text": "qqqqq\nq\nq\nq\nq\nq",
+      "userId": 2
+    },
+    {
+      "id": "77c93525-be0d-4058-9545-06d339835d8c",
+      "text": "123123",
+      "userId": 2
+    },
+    {
+      "id": "4ffe1208-876c-4c9e-98f2-7cacdd43c162",
+      "text": "2",
+      "userId": 3
+    },
+    {
+      "id": "647e9a3f-879a-46c9-a8c5-fbaf4b27bb5e",
+      "text": "ыыыы",
+      "userId": 3
+    },
+    {
+      "id": "0b01fe8e-b091-4cdc-bf41-cafc1a06c5c8",
+      "text": "koval@gmail.com",
+      "userId": 2
     }
   ]
 }
