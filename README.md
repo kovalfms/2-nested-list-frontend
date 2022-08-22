@@ -8,6 +8,9 @@ In the project directory, you can run:
 
 ### `npm start`
 
+Run json-server and json-server-auth
+### `npx json-server  -p 4000 -w db.json  -m ./node_modules/json-server-auth`
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
