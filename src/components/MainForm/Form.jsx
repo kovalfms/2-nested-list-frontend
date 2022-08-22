@@ -1,11 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, TextField} from "@mui/material";
-import {CustomContext} from "../../Context";
 
-const Form = () => {
 
-    const {addNewItem} = useContext(CustomContext)
-
+const Form = ({addNewItem}) => {
     const [inputText, setInputText] = useState('')
 
     const checkInput = () => {

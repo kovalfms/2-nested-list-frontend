@@ -1,11 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Grid, TextField} from "@mui/material";
-import {CustomContext} from "../../Context";
 
-const Edit = ({item, openEdit, setOpenEdit}) => {
+
+const Edit = ({item, openEdit, setOpenEdit, editItem}) => {
     const [inputText, setInputText] = useState(item.text)
-
-    const {editItem} = useContext(CustomContext)
 
     const checkInput = () => {
         if (inputText === '') {

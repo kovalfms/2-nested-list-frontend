@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {
@@ -10,11 +10,16 @@ import {
 } from "@mui/icons-material";
 import {IconButton} from "@mui/material";
 import {pink} from "@mui/material/colors";
-import {CustomContext} from "../../Context";
 
-const SettingMenu = ({handleOpenEdit, item}) => {
 
-    const {addSubList, deleteSublist, deleteItem,} = useContext(CustomContext)
+const SettingMenu = (
+    {
+        handleOpenEdit,
+        item,
+        addSubList,
+        deleteSublist,
+        deleteItem
+    }) => {
 
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,38 +88,5 @@ const SettingMenu = ({handleOpenEdit, item}) => {
         </div>
     );
 }
-
-
-//     return (
-//         <Grid item flex height="100%" width="150px">
-//             <Box
-//                 flexDirection="row"
-//                 justifyContent="center"
-//                 textAlign="center"
-//             >
-//                 <IconButton size="medium" onClick={handleOpenEdit}>
-//                     <BuildOutlined/>
-//                 </IconButton>
-//                 {sublist
-//                     ? <>
-//                         <IconButton size="medium" onClick={() => deleteSubList(id)}>
-//                             <ClearOutlined sx={{color: pink[500]}}/>
-//                         </IconButton>
-//                     </>
-//
-//                     : <>
-//                         <IconButton size="medium" onClick={() => addSubList(id)}>
-//                             <AddOutlined/>
-//                         </IconButton>
-//                     </>
-//
-//                 }
-//                 <IconButton size="medium" onClick={() => deleteItem(id)}>
-//                     <DeleteOutline sx={{color: pink[500]}}/>
-//                 </IconButton>
-//             </Box>
-//         </Grid>
-//     );
-// }
 
 export default SettingMenu

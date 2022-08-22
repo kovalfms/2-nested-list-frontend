@@ -1,36 +1,48 @@
-import React, {useContext, useState} from 'react';
-import {Button, Container, Grid, Paper, Typography} from "@mui/material";
-import {ArrowDownward, ArrowUpward,} from "@mui/icons-material";
-// import NotesList from "../NotesList/NotesList";
+import React, {useState} from 'react';
+import {Badge, Box, Button, Grid, IconButton, Paper, Typography} from "@mui/material";
+import {ArrowDownward, ArrowUpward, VisibilityOffOutlined, VisibilityOutlined,} from "@mui/icons-material";
 import Edit from "../EditForm/Edit";
 import SettingMenu from "../SettingsMenu/Menu";
-import {CustomContext} from "../../Context";
+import NotesList from "../NotesList/NotesList";
 
 
-const NotesListItem = ({listLength, item, index,}) => {
-    const {upOrDownItem} = useContext(CustomContext)
+const NotesListItem = (
+    {
+        notes,
+        setNotes,
+        listLength,
+        item,
+        index,
+        upOrDownItem,
+        editItem,
+        deleteItem,
+        addSubList,
+        deleteSublist
+    }
+) => {
 
     const [openEdit, setOpenEdit] = useState(false)
+    const [openSublist, setOpenSublist] = useState(false)
+    const [openFullText, setOpenFullText] = useState(false)
 
-    const {text, id} = item
+    const {text, id, sublist} = item
 
     const handleOpenEdit = () => setOpenEdit(prevState => !prevState);
+    const handleOpenSublist = () => setOpenSublist(prevState => !prevState);
+    const handleOpenFullText = () => setOpenFullText(prevState => !prevState);
 
     return (
-        <Container sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column"
-        }}>
-            <Paper elevation={2}
-                   sx={{
-                       display: "flex",
-                       justifyContent: "spase-between",
-                       alignItems: "center",
-                       width: "500px",
-                       height: "100%",
-                   }}>
+        <Grid container>
+            <Paper
+                elevation={2}
+                sx={{
+                    display: "flex",
+                    justifyContent: "spase-between",
+                    alignItems: "center",
+                    width: "500px",
+                    height: "100%",
+                    position: "relative"
+                }}>
                 <Grid
                     item
                     flex
@@ -51,34 +63,68 @@ const NotesListItem = ({listLength, item, index,}) => {
                         ? <Edit
                             item={item}
                             setOpenEdit={setOpenEdit}
-                            openEdit={openEdit}/>
+                            openEdit={openEdit}
+                            editItem={editItem}
+                        />
                         : <Typography
-                            sx={{
-                                fontSize: "20px",
-                                wordWrap: "break-word",
-                                padding: "5px"
-                            }}
+                            onClick={handleOpenFullText}
+                            sx={!openFullText
+                                ? {
+                                    fontSize: "20px",
+                                    wordWrap: "break-word",
+                                    padding: "5px",
+                                    whiteSpace: "nowrap",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis"
+                                }
+                                : {
+                                    fontSize: "20px",
+                                    wordWrap: "break-word",
+                                    padding: "5px",
+                                }
+                            }
                         >
                             {text}
                         </Typography>
                     }
+                </Grid>
+                <Grid item sx={{position: "absolute", right: 0, top: 35}}>
+                    <IconButton onClick={handleOpenSublist}>
+                        {sublist && openSublist
+                            ? <Badge badgeContent={sublist?.length} color="primary">
+                                <VisibilityOffOutlined color="action"/>
+                            </Badge>
+                            : <Badge badgeContent={sublist?.length} color="primary">
+                                <VisibilityOutlined color="action"/>
+                            </Badge>
+                        }
+                    </IconButton>
+
 
                 </Grid>
-
-                <SettingMenu item={item} handleOpenEdit={handleOpenEdit}/>
-
+                <Grid item sx={{position: "absolute", right: 0, top: 0}}>
+                    <SettingMenu
+                        item={item}
+                        handleOpenEdit={handleOpenEdit}
+                        deleteItem={deleteItem}
+                        addSubList={addSubList}
+                        deleteSublist={deleteSublist}
+                    />
+                </Grid>
             </Paper>
-            {item.sublist &&
-                <p>SUBLIST ADDED</p>
-                // <NotesList
-                //     // data={item.sublist}
-                //     // onUpdate={setNotes}
-                //     // parentData={notes}
-                //     // parentId={item.id}
-                // />
-            }
-        </Container>
-    );
+            <Box sx={{width: "100%", marginLeft: "540px", border: "3px solid #00000"}}>
+                {openSublist && item.sublist &&
+                    <NotesList
+                        data={item.sublist}
+                        onUpdate={setNotes}
+                        parentData={notes}
+                        parentId={item.id}
+                    />
+                }
+            </Box>
+
+        </Grid>
+    )
 };
 
 export default NotesListItem;

@@ -1,25 +1,27 @@
-import React, {useContext} from 'react';
-import {Container, Grid, Typography} from "@mui/material";
+import React, {useCallback, useContext} from 'react';
+import {Grid, Typography} from "@mui/material";
 import {CustomContext} from "../../Context";
 import NotesList from "../NotesList/NotesList";
+import {baseStorage} from "../../utils/baseStorage";
+
 
 const Dashboard = () => {
     const {auth} = useContext(CustomContext)
 
-    return (
-        <Container>
-            <Grid container>
-                <Grid  item xs={2}>
-                    <Typography variant="h5">
-                        Hello {auth.user?.name}
-                    </Typography>
-                </Grid>
-                <Grid item xs={8}>
-                    <NotesList/>
-                </Grid>
-            </Grid>
+    const updateStorage = useCallback(data => {
+        baseStorage.setItem('notes', data)
+    }, [])
 
-        </Container>
+    return (
+        <>
+            <Typography variant="h5">
+                Hello {auth.user?.name}
+            </Typography>
+            <Grid item xs={12}>
+                <NotesList data={baseStorage.getItem('notes') || []} onUpdate={updateStorage}/>
+            </Grid>
+        </>
+
     );
 };
 

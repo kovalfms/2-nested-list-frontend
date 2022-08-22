@@ -1,55 +1,44 @@
 {
   "users": [
     {
-      "email": "kostya@gmail.com",
-      "password": "$2a$10$fJzctcgRyAPwq4pGkYfHa...UdV6PqK1mKGYIpahxTb6d0tqf4fSe",
-      "name": "Kostya",
+      "email": "kov@gmail.com",
+      "password": "$2a$10$tVA76tpbjbp3hg1z.VlsS.2UA08mmwGZmMvjPpkHB6naH8dh0/Npu",
+      "name": "koval",
+      "notes": [
+        {
+          "id": "b24858e9-2a01-48ee-adca-1174520ef874",
+          "text": "2"
+        },
+        {
+          "id": "8e611cdd-4636-4c81-806d-aa5f4eff41a4",
+          "text": "fms@gmail.com"
+        },
+        {
+          "id": "1c52c204-9be6-479d-af07-a9d3b38626fc",
+          "text": "fms@gmail.com"
+        }
+      ],
       "id": 1
     },
     {
       "email": "fms@gmail.com",
-      "password": "$2a$10$RQjyw6dVftgraXVDrXo6m.u28otHRCyXlvwppROyAIZeE1en.8ZMu",
-      "name": "famous",
-      "id": 2,
+      "password": "$2a$10$WZ30XM5PmYFbSxBa0GKxauYIYb3Do7eypdOi6R/COddUqkDZqPY52",
+      "name": "Famous",
       "notes": [
         {
-          "id": "1a4f1aab-ab27-4ac9-afb9-9271e9032953",
-          "text": "2"
+          "id": "87853c96-644e-4c20-8ed1-af07ef811476",
+          "text": "kostya"
+        },
+        {
+          "id": "c551f74f-63ce-4661-9cd0-1ceb0926f76b",
+          "text": "kostya"
+        },
+        {
+          "id": "e16a27d0-fe2d-4af3-aec9-50aa3132fb6b",
+          "text": "kostya"
         }
-      ]
-    },
-    {
-      "email": "koval@gmail.com",
-      "password": "$2a$10$UxQNd5Q.Upb87MwaiHxjUuosFRdVmMMHYracCQYGYBtfros5qhSiS",
-      "name": "Famous",
-      "id": 3
-    }
-  ],
-  "posts": [
-    {
-      "id": "0b356d7a-d9f7-4bf0-80ac-9e73daf11eea",
-      "text": "qqqqq\nq\nq\nq\nq\nq",
-      "userId": 2
-    },
-    {
-      "id": "77c93525-be0d-4058-9545-06d339835d8c",
-      "text": "123123",
-      "userId": 2
-    },
-    {
-      "id": "4ffe1208-876c-4c9e-98f2-7cacdd43c162",
-      "text": "2",
-      "userId": 3
-    },
-    {
-      "id": "647e9a3f-879a-46c9-a8c5-fbaf4b27bb5e",
-      "text": "ыыыы",
-      "userId": 3
-    },
-    {
-      "id": "0b01fe8e-b091-4cdc-bf41-cafc1a06c5c8",
-      "text": "koval@gmail.com",
-      "userId": 2
+      ],
+      "id": 2
     }
   ]
 }

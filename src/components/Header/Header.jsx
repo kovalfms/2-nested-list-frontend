@@ -8,7 +8,7 @@ const Header = () => {
     const {auth, logOutUser} = useContext(CustomContext)
 
     return (
-        <Box sx={{flexGrow: 1}}>
+        <Box flex justifyContent="space-between" sx={{flexGrow: 1,}}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
