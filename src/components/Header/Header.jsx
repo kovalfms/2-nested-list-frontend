@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {AppBar, Avatar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
 import {SpeakerNotes} from "@mui/icons-material"
 import {Link} from "react-router-dom";
-import {CustomContext} from "../../Context";
+import useApi from "../../utils/Context";
 
 const Header = () => {
-    const {auth, logOutUser} = useContext(CustomContext)
+    const {auth, logOutUser} = useApi()
 
     return (
         <Box flex justifyContent="space-between" sx={{flexGrow: 1,}}>

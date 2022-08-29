@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Box, Typography} from "@mui/material";
-import {CustomContext} from "../Context";
+import useApi from "../utils/Context";
 
 const Home = () => {
-    const {auth} = useContext(CustomContext)
+    const {auth} = useApi()
 
     return (
         <Box display="flex" justifyContent="center">

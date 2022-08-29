@@ -1,16 +1,11 @@
-import React, {useCallback, useContext} from 'react';
+import React from 'react';
 import {Grid, Typography} from "@mui/material";
-import {CustomContext} from "../../Context";
+import useApi from "../../utils/Context";
 import NotesList from "../NotesList/NotesList";
-import {baseStorage} from "../../utils";
 
 
 const Dashboard = () => {
-    const {auth} = useContext(CustomContext)
-
-    const updateStorage = useCallback(data => {
-        baseStorage.setItem('notes', data)
-    }, [])
+    const {auth,data, updateStorage} = useApi()
 
     return (
         <>
@@ -18,7 +13,7 @@ const Dashboard = () => {
                 Hello {auth?.user?.name}
             </Typography>
             <Grid container justifyContent="center" alignItems="center">
-                <NotesList data={baseStorage.getItem('notes') || []} onUpdate={updateStorage}/>
+                <NotesList data={data} onUpdate={updateStorage}/>
             </Grid>
         </>
 

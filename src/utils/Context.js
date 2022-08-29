@@ -1,34 +1,44 @@
-import {createContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 
-import {baseStorage} from "./utils/";
-import {config} from "./utils";
+import {baseStorage} from "./index";
+import {config} from "./index";
 
 
-export const CustomContext = createContext()
-
-
-export const Context = ({children}) => {
+export default function useApi() {
     const [auth, setAuth] = useState('')
+    const [data, setData] = useState([])
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        setAuth(JSON.parse(localStorage.getItem('user_login')))
+        setAuth(baseStorage.getItem('user_login'))
     }, [])
 
     useEffect(() => {
-        fetchNotes()
+        auth && fetchNotes().then(data => setData(data))
     }, [auth])
 
     const fetchNotes = async () => {
         try {
             const {data} = await axios.get(`users/${auth?.user.id}`, config(auth?.accessToken))
-            baseStorage.setItem('notes', data.notes)
+            return data.notes
         } catch (e) {
             console.log(e)
         }
+    }
+
+    const updateStorage = async (data) => {
+        try {
+            if (auth && auth.user && auth.id) {
+                await axios.patch(`users/${auth?.user?.id}`, {notes: data}, config(auth?.accessToken))
+                baseStorage.setItem('notes', data)
+            }
+        } catch (e) {
+            console.log("PATCH ERROR", e)
+        }
+
     }
 
 
@@ -48,7 +58,7 @@ export const Context = ({children}) => {
             await axios.post('/login', data)
                 .then(res => {
                     setAuth(res.data)
-                    localStorage.setItem('user_login', JSON.stringify(res.data))
+                   baseStorage.setItem('user_login', res.data)
                 })
 
             navigate('/dashboard')
@@ -64,19 +74,16 @@ export const Context = ({children}) => {
         setAuth('')
     }
 
-    const value = {
+  return  {
         auth,
         setAuth,
+        data,
         registerUser,
         loginUser,
         logOutUser,
-        fetchNotes
+        fetchNotes,
+        updateStorage
     }
-
-    return (
-        <CustomContext.Provider value={value}>
-            {children}
-        </CustomContext.Provider>)
 }
 
 

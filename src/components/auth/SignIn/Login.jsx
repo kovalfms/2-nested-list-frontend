@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {
     Avatar, Box,
     Button,
@@ -15,11 +15,11 @@ import {
 import {LockOutlined, Visibility, VisibilityOff} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {useForm, Controller} from "react-hook-form";
-import {CustomContext} from "../../../Context";
+import useApi from "../../../utils/Context";
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false)
-    const {loginUser} = useContext(CustomContext)
+    const {loginUser} = useApi()
     const {control, handleSubmit} = useForm({
             defaultValues: {
                 remember: false,

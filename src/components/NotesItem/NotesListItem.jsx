@@ -17,6 +17,7 @@ const NotesListItem = (
         editItem,
         deleteItem,
         addSubList,
+        addNewItem,
         deleteSublist
     }
 ) => {
@@ -102,7 +103,6 @@ const NotesListItem = (
                         }
                     </IconButton>
 
-
                 </Grid>
                 <Grid item sx={{position: "absolute", right: 0, top: 0}}>
                     <SettingMenu
@@ -111,18 +111,18 @@ const NotesListItem = (
                         deleteItem={deleteItem}
                         addSubList={addSubList}
                         deleteSublist={deleteSublist}
+                        addNewItem={addNewItem}
                     />
                 </Grid>
             </Paper>
-                {openSublist && item.sublist &&
-                        <NotesList
-                            data={item.sublist}
-                            onUpdate={setNotes}
-                            parentData={notes}
-                            parentId={item.id}
-                        />
-                }
-
+            {openSublist && item.sublist &&
+                <NotesList
+                    data={item.sublist}
+                    onUpdate={setNotes}
+                    parentData={notes}
+                    parentId={item.id}
+                />
+            }
         </Grid>
     )
 };
