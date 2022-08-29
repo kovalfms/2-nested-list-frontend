@@ -1,44 +1,25 @@
 {
   "users": [
     {
-      "email": "kov@gmail.com",
-      "password": "$2a$10$tVA76tpbjbp3hg1z.VlsS.2UA08mmwGZmMvjPpkHB6naH8dh0/Npu",
-      "name": "koval",
+      "email": "koval@gmail.com",
+      "password": "$2a$10$3/XxQI8UHL3Mg1EJjLxVt.v1/qPEJ58dzMGJ0WtwHk47zoNy76iLO",
+      "name": "Kostya",
       "notes": [
         {
-          "id": "b24858e9-2a01-48ee-adca-1174520ef874",
-          "text": "2"
+          "id": "995aae0b-a6f2-48be-b6be-3587def3a726",
+          "text": "22"
         },
         {
-          "id": "8e611cdd-4636-4c81-806d-aa5f4eff41a4",
-          "text": "fms@gmail.com"
+          "id": "4e0c6e7f-b306-4147-ade1-44901a4a21a0",
+          "text": "222",
+          "sublist": []
         },
         {
-          "id": "1c52c204-9be6-479d-af07-a9d3b38626fc",
+          "id": "20cf4511-3dd3-4054-88f5-10f4eecfa7e0",
           "text": "fms@gmail.com"
         }
       ],
       "id": 1
-    },
-    {
-      "email": "fms@gmail.com",
-      "password": "$2a$10$WZ30XM5PmYFbSxBa0GKxauYIYb3Do7eypdOi6R/COddUqkDZqPY52",
-      "name": "Famous",
-      "notes": [
-        {
-          "id": "87853c96-644e-4c20-8ed1-af07ef811476",
-          "text": "kostya"
-        },
-        {
-          "id": "c551f74f-63ce-4661-9cd0-1ceb0926f76b",
-          "text": "kostya"
-        },
-        {
-          "id": "e16a27d0-fe2d-4af3-aec9-50aa3132fb6b",
-          "text": "kostya"
-        }
-      ],
-      "id": 2
     }
   ]
 }

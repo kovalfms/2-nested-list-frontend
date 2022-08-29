@@ -4,8 +4,8 @@ import {CustomContext} from "../../Context";
 import Form from "../MainForm/Form";
 import NotesListItem from "../NotesItem/NotesListItem";
 import {v4 as uniqId} from "uuid";
-import api from "../../server/api";
-import {config} from "../../Context";
+import {config} from "../../utils";
+import axios from "axios";
 
 
 const NotesList = ({data, onUpdate, parentData, parentId}) => {
@@ -27,7 +27,7 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
             text
         }
         try {
-            await api.patch(`users/${auth.user?.id}`, {notes: [newItem, ...notes]}, config(auth?.accessToken))
+            await axios.patch(`users/${auth?.user.id}`, {notes: [newItem, ...notes]}, config(auth?.accessToken))
             setNotes(prevState => [newItem, ...prevState])
         } catch (e) {
             console.log(e)
@@ -37,19 +37,16 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
     const editItem = async (text, id) => {
         const list = [...notes]
         const findIndex = list.findIndex((item) => item.id === id);
-        const editNote = {
+        list[findIndex] = {
             ...list[findIndex],
             text: text
         }
-        list[findIndex] = editNote
         try {
-            await api.patch(`users/${auth.user.id}`, {notes: list}, config(auth?.accessToken))
+            await axios.patch(`users/${auth.user.id}`, {notes: list}, config(auth?.accessToken))
             setNotes(list)
         } catch (e) {
             console.log(e)
         }
-        console.log("EDITED NOTE  ", editNote)
-        console.log("NOTES", notes)
     }
 
     const addSubList = async (id) => {
@@ -57,7 +54,7 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
         const findIndex = list.findIndex((item) => item.id === id);
         list[findIndex].sublist = []
         try {
-            await api.patch(`users/${auth.user.id}`, {notes: list}, config(auth?.accessToken))
+            await axios.patch(`users/${auth.user.id}`, {notes: list}, config(auth?.accessToken))
             setNotes(prevState => [...prevState])
         } catch (e) {
             console.log(e)
@@ -69,10 +66,7 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
         const findIndex = list.findIndex((item) => item.id === id);
         delete list[findIndex].sublist
         try {
-            await api.patch(`users/${auth.user.id}`,
-                {
-                    notes: list
-                }, config(auth?.accessToken))
+            await axios.patch(`users/${auth.user.id}`, {notes: list}, config(auth?.accessToken))
             setNotes(prevState => [...prevState])
         } catch (e) {
             console.log(e)
@@ -81,9 +75,8 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
 
     const deleteItem = async (id) => {
         const deleteNote = [...notes].filter(item => item.id !== id)
-        console.log(deleteNote)
         try {
-            await api.patch(`users/${auth.user.id}`, {notes: deleteNote}, config(auth?.accessToken))
+            await axios.patch(`users/${auth.user.id}`, {notes: deleteNote}, config(auth?.accessToken))
             setNotes(prevState => prevState.filter(item => item.id !== id))
 
         } catch (e) {
@@ -100,15 +93,13 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
         newPosition.splice(currentIndex + delta, 0, item);
 
         try {
-            await api.patch(`users/${auth.user.id}`, {notes: newPosition}, config(auth?.accessToken))
-            const {data} = await api.get(`users/${auth.user.id}`, config)
+            await axios.patch(`users/${auth.user.id}`, {notes: newPosition}, config(auth?.accessToken))
+            const {data} = await axios.get(`users/${auth.user.id}`, config)
             setNotes(data.notes)
         } catch (e) {
             console.log(e)
         }
         setNotes(newPosition)
-        console.log(newPosition, ` new position`)
-        console.log(currentIndex, ` current index`)
     }
 
 
@@ -116,8 +107,10 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
         <Grid
             container
             flex
-            justifyContent="flex-start"
+            justifyContent="center"
+            alignItems="center"
             flexDirection="column"
+            width="500px"
         >
             <Form addNewItem={addNewItem}/>
             {notes.map((item, index) =>
@@ -137,7 +130,6 @@ const NotesList = ({data, onUpdate, parentData, parentId}) => {
                         deleteSublist={deleteSublist}
                         deleteItem={deleteItem}
                         upOrDownItem={upOrDownItem}
-
                     />
                 </Grid>
             )}

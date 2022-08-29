@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Badge, Box, Button, Grid, IconButton, Paper, Typography} from "@mui/material";
+import {Badge, Button, Grid, IconButton, Paper, Typography} from "@mui/material";
 import {ArrowDownward, ArrowUpward, VisibilityOffOutlined, VisibilityOutlined,} from "@mui/icons-material";
 import Edit from "../EditForm/Edit";
 import SettingMenu from "../SettingsMenu/Menu";
@@ -32,7 +32,7 @@ const NotesListItem = (
     const handleOpenFullText = () => setOpenFullText(prevState => !prevState);
 
     return (
-        <Grid container>
+        <Grid container flex justifyContent="center" alignItems="center">
             <Paper
                 elevation={2}
                 sx={{
@@ -42,11 +42,13 @@ const NotesListItem = (
                     width: "500px",
                     height: "100%",
                     position: "relative"
-                }}>
+                }}
+            >
                 <Grid
                     item
                     flex
                     flexDirection="column"
+                    justifyContent="center"
                     alignItems="center"
                     width="50px"
 
@@ -112,16 +114,14 @@ const NotesListItem = (
                     />
                 </Grid>
             </Paper>
-            <Box sx={{width: "100%", marginLeft: "540px", border: "3px solid #00000"}}>
                 {openSublist && item.sublist &&
-                    <NotesList
-                        data={item.sublist}
-                        onUpdate={setNotes}
-                        parentData={notes}
-                        parentId={item.id}
-                    />
+                        <NotesList
+                            data={item.sublist}
+                            onUpdate={setNotes}
+                            parentData={notes}
+                            parentId={item.id}
+                        />
                 }
-            </Box>
 
         </Grid>
     )

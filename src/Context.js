@@ -1,15 +1,12 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import api from "./server/api";
-import {baseStorage} from "./utils/baseStorage";
+import axios from "axios";
+
+import {baseStorage} from "./utils/";
+import {config} from "./utils";
 
 
 export const CustomContext = createContext()
-export const config = (user) => {
-    return ({
-        headers: {Authorization: `Bearer ${user}`}
-    })
-};
 
 
 export const Context = ({children}) => {
@@ -27,7 +24,7 @@ export const Context = ({children}) => {
 
     const fetchNotes = async () => {
         try {
-            const {data} = await api.get(`users/${auth?.user.id}`, config(auth?.accessToken))
+            const {data} = await axios.get(`users/${auth?.user.id}`, config(auth?.accessToken))
             baseStorage.setItem('notes', data.notes)
         } catch (e) {
             console.log(e)
@@ -37,7 +34,7 @@ export const Context = ({children}) => {
 
     const registerUser = async (data) => {
         try {
-            await api.post('/register', {...data, notes: []})
+            await axios.post('/register', {...data, notes: []})
                 .then(res => res.data)
             navigate('/login')
 
@@ -48,7 +45,7 @@ export const Context = ({children}) => {
 
     const loginUser = async (data) => {
         try {
-            await api.post('/login', data)
+            await axios.post('/login', data)
                 .then(res => {
                     setAuth(res.data)
                     localStorage.setItem('user_login', JSON.stringify(res.data))

@@ -2,7 +2,7 @@ import React, {useCallback, useContext} from 'react';
 import {Grid, Typography} from "@mui/material";
 import {CustomContext} from "../../Context";
 import NotesList from "../NotesList/NotesList";
-import {baseStorage} from "../../utils/baseStorage";
+import {baseStorage} from "../../utils";
 
 
 const Dashboard = () => {
@@ -15,12 +15,13 @@ const Dashboard = () => {
     return (
         <>
             <Typography variant="h5">
-                Hello {auth.user?.name}
+                Hello {auth?.user?.name}
             </Typography>
-            <Grid item xs={12}>
+            <Grid container justifyContent="center" alignItems="center">
                 <NotesList data={baseStorage.getItem('notes') || []} onUpdate={updateStorage}/>
             </Grid>
         </>
+
 
     );
 };
